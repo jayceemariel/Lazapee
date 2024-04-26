@@ -1,2 +1,2 @@
 # Lazapee
-Django-Project
+Django-Project Payroll system Project
