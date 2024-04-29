@@ -1,0 +1,47 @@
+<!--
+Loads at localhost:8000/manage_account/<int:pk>/
+Displays the account’s username and three buttons: change password, delete account, and back.
+Clicking on the change password button will navigate the user to a new page to prompt them to supply a new password.
+Clicking on the delete account button will delete the credentials, then will log out the user (like above). If the user attempts to login again using the deleted account’s credentials, the login attempt should be invalid.
+The back button will return the user to the basic list page. 
+
+
+-->
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazaPee</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap/css/custom.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Account</h1>
+    <p>Welcome! <b><u>{{d.user}}</u></b></p>
+    <a  class="btn" href="{% url 'change_password' pk=d.pk %}">Change Password</a>
+              
+    <!-- navigate the user to a new page to prompt them to supply a new password. -->
+    
+    <a  class="btn btn-danger" href="#">Delete Account</a>
+    <!-- delete the credentials, then will log out the user (like above). If the user attempts to login again using the deleted account’s credentials, the login attempt should be invalid. -->
+
+    <a  class="btn" href="{% url 'supply' pk=d.pk %}">Back</a>
+              
+    <!-- will return the user to the basic list page.  -->
+</body>
+</html>

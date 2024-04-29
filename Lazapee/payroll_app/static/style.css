@@ -1,0 +1,561 @@
+:root {
+  /* Colors */
+
+  --primary-color: #d6c6a2;
+  --point-color: #f2bc57;
+  --black-color: #07090d;
+  --white-color: #F4F4F8;
+  --error-color: #dc3545;
+  --success-color: #198754;
+  --primary-color-hover:  #2E65F3;
+
+  /* Typography */
+  --font-primary: 'Arial', sans-serif;
+  --font-secondary: 'Helvetica', sans-serif;
+
+  /* Spacing */
+  --spacing-small: 5px;
+  --spacing-medium: 10px;
+  --spacing-large: 20px;
+
+    /* Colors  for circle animation*/
+    --circle-color:  linear-gradient(200deg, #fef2a0 0%, #c1782b 100%);
+}
+
+/* Default styles for larger screens */
+.circle {
+  background: var(--circle-color);
+  clip-path: circle(50%);
+  height: 30em;
+  width: 30em;
+  position: relative; 
+  animation-name: circles;
+  animation-duration: 20s;
+  animation-iteration-count: infinite; 
+}
+
+@keyframes circles {
+  0%   {left: 0px; top: 0px; height: 30em; width: 30em;} /* Initial size */
+  25%  {left: 200px; top: 0px; height: 20em; width: 20em;} /* Change size */
+  50%  {left: 200px; top: 200px; height: 10em; width: 10em;} /* Change size */
+  75%  {left: 0px; top: 200px; height: 5em; width: 5em;} /* Change size */
+  100% {left: 0px; top: 0px; height: 30em; width: 30em;} /* Return to initial size */
+}
+
+
+/* Default styles for larger screens */
+body {
+  margin: 0;
+  display: block;  
+  height: 100vh;
+  background-color: var(--primary-color);
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif
+  /* box-sizing: border-box; */
+}
+
+/* Styles for smaller screens (assuming taskbar reduces available space) */
+@media (max-height: 671.200px) {
+  body {
+    height: auto;
+  }
+}
+.btn {
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+}
+.form-elements > * {
+  margin-bottom: 10px; /* Adjust the space between elements as needed */
+}
+
+.btn-paleBlue {
+  color: #334B8C;
+  font-weight: 100;
+  background-color: #BCC7E4;
+  border: none;
+}
+
+
+.btn-lineBlue {
+  color: #334B8C;
+  font-weight: 100;
+  border: 1px solid #334B8C; 
+}
+
+.btn-paleBlue:hover {
+  color: white;
+  background-color: #9d9fbd;
+}
+
+.btn-Blue {
+  color: white;
+  font-weight: 100;
+  background-color: #0047FF;
+  border: none;
+}
+
+.btn-Blue:hover {
+  color: white;
+  background-color: #2E65F3;
+}
+
+
+#main {
+  margin-left: 61px;
+  height: 100vh; 
+  overflow-y: auto;
+}
+
+body.sidebar-open #mySidebar {
+  width: 18%;
+  padding: 12px 8px;
+}
+
+body.sidebar-open #main {
+  margin-left: 18%;
+  padding-left: 15px;
+}
+
+.nav-bar {
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  max-height: 48px;
+  border-top-left-radius: 18px;
+  padding: 10px 16px 0 16px;
+  display: flex;
+  z-index: 2;
+  position: sticky;
+  top: 0;
+}
+
+.nav-bar-left {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  right: auto;
+}
+
+.nav-bar-right {
+  display: flex;
+  align-items: center;
+}
+
+.back-nav-bar {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px 16  px 0 16px;
+  height: 40px;
+  top:0;
+  display: flex;
+  position: fixed;
+  width: 40px;
+  z-index: 1;
+}
+
+
+.base-container-fluid {
+  position: fixed;
+  z-index: 1;
+  border-radius: 20px;
+  background-color: #efefef; 
+  padding: 20px; 
+}
+
+.table-bg-color {
+   background-color: var(--white-color); 
+   padding: 16;
+}
+
+
+.menu-icon {
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.menu-icon.open {
+  transform: rotate(90deg);
+}
+
+.details-head {
+  margin: auto 0;
+  padding-left: 10px;
+}
+
+.details-heads {
+  padding: 12.5 15;
+  padding-left: 10px;
+}
+
+
+.sidebar-nav-ext {
+  text-decoration: none;
+  display: flex;
+  color: #616CA4;
+  
+}
+
+.sidebar-nav-ext:hover {
+  cursor: pointer;
+  background-color: #b4a877;
+  color: white;
+  border-radius: 12px;
+}
+
+.sidebar-nav-ext.active {
+  cursor: pointer;
+  border-radius: 12px;
+  background: var(--circle-color);
+  color: white;
+}
+
+
+.icon-nav {
+  padding: 10;
+  width: 44px; 
+}
+
+.sidenav {
+  background-color: var(--primary-color);
+  height: 100vh; 
+  position: fixed;
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+}
+
+.sidebar-top {
+  padding: 12px 8px;
+  position: relative;
+  margin-bottom: auto; 
+}
+
+.sidebar-bottom {
+  padding: 8px 8px;
+  position: relative;
+  margin-top: auto; /* Places the sidebar-bottom at the bottom of the sidenav */
+}
+
+.footers {
+  background-color: #F4F4F8;
+  padding: 10 0;
+  color: rgb(150, 150, 150);    
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.hide {
+  display: none; 
+}
+
+.w {
+  background-color: red;
+  width:auto;
+}
+ 
+.long-button {
+  display: block; /* Make the <a> element behave like a block element */
+  width: 100%;
+}
+.container-fluid {
+  border-radius: 20px;
+  background-color: var(--white-color); 
+  padding: 10px; 
+}
+
+.form-label{
+  margin: none;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.subtitle {
+  color: #4b4f67;
+  font-size: 12px;
+}
+
+.link-1 {
+  color: #00B2FF;
+  font-size: 12px;
+  text-decoration: none; 
+}
+
+.link-1:hover {
+  text-decoration: underline; 
+  cursor: pointer;
+}
+
+
+.link-2 {
+  color: #ff0040;
+  font-size: 12px;
+}
+
+
+
+.space-bottom{
+  margin-bottom: 12px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  border: 2px solid #CDCDCD;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  background-position: 10px 10px; 
+  outline: none;
+  background-repeat: no-repeat;
+}
+
+.form-control:focus {
+  border: 2px solid #474E54;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.receipt-content .logo a:hover {
+  text-decoration: none;
+  color: #7793C4; 
+}
+
+.receipt-content .invoice-wrapper {
+  background: #FFF;
+  border: 1px solid #CDD3E2;
+  box-shadow: 0px 0px 1px #CCC;
+  padding: 40px 40px 60px;
+  margin-top: 40px;
+  border-radius: 4px; 
+}
+
+.receipt-content .invoice-wrapper .payment-details span {
+  color: #A9B0BB;
+  display: block; 
+}
+.receipt-content .invoice-wrapper .payment-details a {
+  display: inline-block;
+  margin-top: 5px; 
+}
+
+.receipt-content .invoice-wrapper .line-items .print a {
+  display: inline-block;
+  border: 1px solid #9CB5D6;
+  padding: 13px 13px;
+  border-radius: 5px;
+  color: #708DC0;
+  font-size: 13px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear; 
+}
+
+.receipt-content .invoice-wrapper .line-items .print a:hover {
+  text-decoration: none;
+  border-color: #333;
+  color: #333; 
+}
+
+.receipt-content {
+  background: #ECEEF4; 
+}
+@media (min-width: 1200px) {
+  .receipt-content .container {width: 900px; } 
+}
+
+.receipt-content .logo {
+  text-align: center;
+  margin-top: 50px; 
+}
+
+.receipt-content .logo a {
+  font-family: Myriad Pro, Lato, Helvetica Neue, Arial;
+  font-size: 36px;
+  letter-spacing: .1px;
+  color: #555;
+  font-weight: 300;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear; 
+}
+
+.receipt-content .invoice-wrapper .intro {
+  line-height: 25px;
+  color: #444; 
+}
+
+.receipt-content .invoice-wrapper .payment-info {
+  margin-top: 25px;
+  padding-top: 15px; 
+}
+
+.receipt-content .invoice-wrapper .payment-info span {
+  color: #A9B0BB; 
+}
+
+.receipt-content .invoice-wrapper .payment-info strong {
+  display: block;
+  color: #444;
+  margin-top: 3px; 
+}
+
+@media (max-width: 767px) {
+  .receipt-content .invoice-wrapper .payment-info .text-right {
+  text-align: left;
+  margin-top: 20px; } 
+}
+.receipt-content .invoice-wrapper .payment-details {
+  border-top: 2px solid #EBECEE;
+  margin-top: 30px;
+  padding-top: 20px;
+  line-height: 22px; 
+}
+
+
+@media (max-width: 767px) {
+  .receipt-content .invoice-wrapper .payment-details .text-right {
+  text-align: left;
+  margin-top: 20px; } 
+}
+.receipt-content .invoice-wrapper .line-items {
+  margin-top: 40px; 
+}
+.receipt-content .invoice-wrapper .line-items .headers {
+  color: #A9B0BB;
+  font-size: 13px;
+  letter-spacing: .3px;
+  border-bottom: 2px solid #EBECEE;
+  padding-bottom: 4px; 
+}
+.receipt-content .invoice-wrapper .line-items .items {
+  margin-top: 8px;
+  border-bottom: 2px solid #EBECEE;
+  padding-bottom: 8px; 
+}
+.receipt-content .invoice-wrapper .line-items .items .item {
+  padding: 10px 0;
+  color: #696969;
+  font-size: 15px; 
+}
+@media (max-width: 767px) {
+  .receipt-content .invoice-wrapper .line-items .items .item {
+  font-size: 13px; } 
+}
+.receipt-content .invoice-wrapper .line-items .items .item .amount {
+  letter-spacing: 0.1px;
+  color: #84868A;
+  font-size: 16px;
+ }
+@media (max-width: 767px) {
+  .receipt-content .invoice-wrapper .line-items .items .item .amount {
+  font-size: 13px; } 
+}
+
+.receipt-content .invoice-wrapper .line-items .total {
+  margin-top: 30px; 
+}
+
+.receipt-content .invoice-wrapper .line-items .total .extra-notes {
+  float: left;
+  width: 40%;
+  text-align: left;
+  font-size: 13px;
+  color: #7A7A7A;
+  line-height: 20px; 
+}
+
+@media (max-width: 767px) {
+  .receipt-content .invoice-wrapper .line-items .total .extra-notes {
+  width: 100%;
+  margin-bottom: 30px;
+  float: none; } 
+}
+
+.receipt-content .invoice-wrapper .line-items .total .extra-notes strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #454545; 
+}
+
+.receipt-content .invoice-wrapper .line-items .total .field {
+  margin-bottom: 7px;
+  font-size: 14px;
+  color: #555; 
+}
+
+.receipt-content .invoice-wrapper .line-items .total .field.grand-total {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500; 
+}
+
+.receipt-content .invoice-wrapper .line-items .total .field.grand-total span {
+  color: #20A720;
+  font-size: 16px; 
+}
+
+.receipt-content .invoice-wrapper .line-items .total .field span {
+  display: inline-block;
+  margin-left: 20px;
+  min-width: 85px;
+  color: #84868A;
+  font-size: 15px; 
+}
+
+.receipt-content .invoice-wrapper .line-items .print {
+  margin-top: 50px;
+  text-align: center; 
+}
+
+
+
+.receipt-content .invoice-wrapper .line-items .print a i {
+  margin-right: 3px;
+  font-size: 14px; 
+}
+
+.receipt-content .footer {
+  margin-top: 40px;
+  margin-bottom: 110px;
+  text-align: center;
+  font-size: 12px;
+  color: #969CAD; 
+}          

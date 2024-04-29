@@ -1,0 +1,32 @@
+
+{% extends 'Framework/navbar.html' %} <!--coppies the base.html format-->
+{% load static %}
+
+{% block content %} 
+<div class="container-fluid" style="height: 100vh">
+    <h4>Create Employee</h4>
+    <form  id="adding_employee_form" method="POST" >
+        {% csrf_token %}
+        <div class="row">
+            <label for="sku" class="col-4">Name:</label>
+            <input type="text" class="form-control mb-3 col-8" id="name" name="name">
+        </div>
+        <div class="row">
+            <label for="brand" class="col-4">ID Number:</label>
+            <input type="text" class="form-control mb-3 col-8" id="id_num" name="id_num">
+        </div>
+        <div class="row">
+            <label for="cost" class="col-4">Rate:</label>
+            <input type="text" class="form-control mb-3 col-8" id="rate" name="rate">
+        </div>
+    
+        <div class="row">
+            <label for="size" class="col-4">Allowance (Optional):</label>
+            <input type="text" class="form-control mb-3 col-8" id="Allowance" name="Allowance">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="{%url 'employee' pk=d.pk %}"  class="btn btn-danger">Cancel</a>
+    </form>
+</div>
+    
+{% endblock %}

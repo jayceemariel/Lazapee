@@ -1,0 +1,28 @@
+{% extends 'Framework/navbar.html' %} <!--coppies the base.html format-->
+{% load static %}
+
+{% block content %} 
+<!-- <h4>Pay Slip</h4> -->
+<div class="col-md-8">
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title"> Employee Details:</h5>
+        </div>
+        <div class="card-body">            
+            <h2>{{ e.name }}</h2>
+            <p>ID Number: {{ e.id_number }}</p>
+            <p>Rate: {{ e.rate }}</p>
+            <p>Allowance: {{ e.allowance }}</p>
+            <p>Overtime Pay: {{ e.overtime_pay }}</p>
+            
+            <p>
+                <a href="{% url 'employee' pk=d.pk%}"  class="btn btn-primary">Cancel</a>
+
+            </p>
+            
+        </div>
+    </div>
+
+</div>
+{% endblock %}

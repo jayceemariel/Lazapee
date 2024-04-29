@@ -1,0 +1,71 @@
+<!-- 
+Loads at localhost:8000/signup/
+Prompts the user to supply a username and password.
+If the supplied username already exists, a warning “Account already exists” should be displayed. 
+Otherwise, the user is navigated back to the login page with a message “Account created successfully”
+
+-->
+{% load static %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory App</title>
+   
+    <!-- This is where all of the editable styles should be placed in -->
+   <link rel="stylesheet" href="{% static 'style.css' %}"> 
+   <script src="{% static 'script.js' %}"></script>
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <style>
+     body, html {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .base-container-fluid h1{
+        font-family: 'Roboto Condensed';   
+        color:  var(--point-color); 
+    }
+    </style>
+</head>
+<body>
+    <div class="base-container-fluid container-element-form ">
+      <h1>Sign Up</h1>
+      <p style ="color:#A7A8B6"> Sign Up By entering the information Below</p>
+      <form id="login_form" method="POST">
+          {% csrf_token %}
+          <div>
+              <label for="username" class="form-label">Username or Email</label>
+              
+              {% if error_message %}
+              <a class="link-2 right">{{ error_message }}</a>
+              {% endif %}
+
+              <input type="text" class="form-control space-bottom" id="username" name="username" placeholder="Email">
+          </div>
+          <div>
+              <label for="password" class="form-label">Password</label>
+              {% if error_message_pss %}
+                <a class="link-2 right">{{ error_message_pss }}</a>
+                {% endif %}
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          </div>
+          <div>
+            <br>
+            <button type="submit" class="btn btn-Blue space-top" >Submit</button>
+            <a class="btn btn-lineBlue space-top"  href="{% url 'Login' %}" >Cancel</a>  
+        </div>
+
+      </form>
+  
+    </div>
+</body>
+</html>

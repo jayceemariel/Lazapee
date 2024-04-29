@@ -1,0 +1,113 @@
+{% extends 'Framework/navbar.html' %} <!--coppies the base.html format-->
+{% load static %}
+
+{% block content %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 text-left">
+            <ul class="list-unstyled">
+                <li><strong>NAME:</strong> {{p.id_number.name}}</li>
+                <li><strong>ID NUMBER:</strong>{{p.id_number.name}}</li>
+            </ul>
+         </div>
+
+        <div class="col-md-6 col-sm-6 text-right">
+            <ul class="list-unstyled">
+                <li><strong>DATE:</strong>{{ p.month }} {{ p.date_range }}, {{ p.year }}</li>
+                <li><strong>PAYSLIP ID:</strong> 1</li>
+            </ul>
+        </div>
+    </div>
+
+	<div class="row">
+        <div class="col-md-6">
+            <div class="table-responsive">
+                <table class="table table-condensed nomargin">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th><strong>AMOUNT</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>EARNINGS</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><div>Base Pay</div></td>
+                            <td>{{p.rate}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><div>Allowances</div></td>
+                            <td>{{p.id_number.allowance}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Overtimes</td>
+                            <td>{{p.id_number.overtime_pay}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GROSS PAY</strong></td>
+                            <td></td>
+                            <td><strong>PHP</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr class="nomargin-top">
+            <h6><strong>DEDUCTIONS</strong></h6>
+            <div class="table-responsive">
+                <table class="table table-condensed nomargin">
+                    <tbody>
+                        <tr>
+                            <td><div>W/HOLDING TAX</div></td>
+                            <td>{{p.deductions_tax}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><div>PHILHEALTH</div></td>
+                            <td>{{p.deductions_health}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>SSS</td>
+                            <td>{{p.sss}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><div><strong>TOTAL DEDUCTIONS</strong></div></td>
+                            <td></td>
+                            <td><strong>PHP</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr class="nomargin-top">
+        </div>
+    </div>
+    
+    <hr class="nomargin-top">
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <h4><strong>NET PAY</strong></h4>
+            <br><!-- no P margin for printing - use <br> instead -->
+
+            
+        </div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}
