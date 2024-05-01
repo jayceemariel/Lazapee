@@ -25,19 +25,10 @@ urlpatterns = [
   
     #For Accounts Requires the UNIQUE ID of the Class
     path('Sign-up',views.signup, name='sign-up_view'),
-    
-    # Requires the UNIQUE ID of the Class
-    path('dashboard/<int:pk>/', views.dashboard, name='dashboards'),
-    path('view_supplier/<int:pk>/', views.supplier_info, name='supply'),
    
    #Manage Account Stuff
     path('change_password/<int:pk>/', views.change_password, name='change_password'),
     path('manage_account/<int:pk>/', views.manage_account, name='manage_account'),
-    
-    #Viewing of Bottles
-    path('view_bottles/<int:pk>/', views.bottles_info, name='bottles'),
-    path('add_bottle/<int:pk>/', views.add_bottle, name='add'),
-    path('view_bottle_details/<int:pk>/', views.view_bottle_details, name='view_details'),
 
     #Viewing of Employee
     path('view_employee/<int:pk>/', views.employee, name='employee'),

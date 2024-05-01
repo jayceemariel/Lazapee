@@ -1,28 +1,40 @@
+
 {% extends 'Framework/navbar.html' %} <!--coppies the base.html format-->
 {% load static %}
 
 {% block content %} 
-<!-- <h4>Pay Slip</h4> -->
-<div class="col-md-8">
-
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title"> Employee Details:</h5>
+<div class="container-fluid" style="height: 100vh">
+    <h4>Create Employee</h4>
+    <form  id="adding_employee_form" method="POST" >
+        {% csrf_token %}
+        <div class="row">
+            <label for="sku" class="col-4">Name:</label>
+            <input type="text" class="form-control mb-3 col-8" id="name" name="name" placeholder="{{ e.name }}">
         </div>
-        <div class="card-body">            
-            <h2>{{ e.name }}</h2>
-            <p>ID Number: {{ e.id_number }}</p>
-            <p>Rate: {{ e.rate }}</p>
-            <p>Allowance: {{ e.allowance }}</p>
-            <p>Overtime Pay: {{ e.overtime_pay }}</p>
-            
-            <p>
-                <a href="{% url 'employee' pk=d.pk%}"  class="btn btn-primary">Cancel</a>
-
-            </p>
-            
+        <div class="row">
+            <label for="brand" class="col-4">ID Number:</label>
+            <input type="text" class="form-control mb-3 col-8" id="id_num" name="id_num" placeholder=" {{ e.id_number }}">
         </div>
-    </div>
+        <div class="row">
+            <label for="cost" class="col-4">Rate:</label>
+            <input type="text" class="form-control mb-3 col-8" id="rate" name="rate" placeholder=" {{ e.rate }}">
+        </div>
+    
+        <div class="row">
+            <label for="size" class="col-4">Allowance (Optional):</label>
+            <input type="text" class="form-control mb-3 col-8" id="Allowance" name="Allowance" placeholder="{{ e.allowance }}">
+        </div>
 
+        <div class="row">
+            <label for="size" class="col-4">Overtime Pay:</label>
+            <input type="text" class="form-control mb-3 col-8" id="Allowance" name="Allowance" placeholder="{{ e.overtime_pay }}">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="{%url 'employee' pk=d.pk %}"  class="btn btn-danger">Cancel</a>
+    </form>
 </div>
+    
 {% endblock %}
+
+

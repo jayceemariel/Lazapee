@@ -157,28 +157,3 @@ def signup(request):
         return redirect('Login') #goes to logIn once everything is submitted
     else: 
         return render(request, 'Account/account_signup.html')
-
-
-# CONTENT
-def bottles_info(request,pk):
-    account = get_object_or_404(Account, pk=pk)
-    bottle_info = get_object_or_404(WaterBottle, pk=pk)
-
-    bottles = WaterBottle.objects.all()
-    return render(request, 'Content/Bottles/bottles_info.html', {'bottles':bottles, 'd': account})
-
-def supplier_info(request,pk):
-    d = get_object_or_404(Account, pk=pk)
-    supp = Supplier.objects.all()
-    return render(request, 'Content/Supplier/supplier_info.html',{'suppliers':supp, 'd': d})
-
-def add_bottle(request,pk):
-    d = get_object_or_404(Account, pk=pk)
-    return render(request, 'Content/Bottles/add_bottle.html',{'d': d})
-
-
-
-
-def view_bottle_details(request, pk): #Specifically looking at the Menu
-    d = get_object_or_404(Account, pk=pk)
-    return render(request, 'Content/Bottles/bottles_detail.html', {'d': d})

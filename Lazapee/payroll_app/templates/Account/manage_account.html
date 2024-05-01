@@ -40,7 +40,7 @@ The back button will return the user to the basic list page.
     <a  class="btn btn-danger" href="#">Delete Account</a>
     <!-- delete the credentials, then will log out the user (like above). If the user attempts to login again using the deleted account’s credentials, the login attempt should be invalid. -->
 
-    <a  class="btn" href="{% url 'supply' pk=d.pk %}">Back</a>
+    <a  class="btn" href="{% url 'employee' pk=d.pk %}">Back</a>
               
     <!-- will return the user to the basic list page.  -->
 </body>

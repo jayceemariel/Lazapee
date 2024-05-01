@@ -4,27 +4,30 @@
 {% block content %} 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-sm-6 text-left">
+        <div class="col-md-6 col-sm-6">
+            <h4><strong>Client</strong> Details</h4>
             <ul class="list-unstyled">
                 <li><strong>NAME:</strong> {{p.id_number.name}}</li>
-                <li><strong>ID NUMBER:</strong>{{p.id_number.name}}</li>
+                <li><strong>ID NUMBER:</strong> {{p.id_number.id_number}}</li>
             </ul>
          </div>
 
-        <div class="col-md-6 col-sm-6 text-right">
+        <div class="col-md-6 col-sm-6" style="text-align: right">
+            <h4><strong>Other</strong> Details</h4>
             <ul class="list-unstyled">
-                <li><strong>DATE:</strong>{{ p.month }} {{ p.date_range }}, {{ p.year }}</li>
-                <li><strong>PAYSLIP ID:</strong> 1</li>
+                <li><strong>DATE:</strong> {{ p.month }} {{ p.date_range }}, {{ p.year }}</li>
+                <li><strong>PAYSLIP ID:</strong> 1</li> 
             </ul>
         </div>
     </div>
 
 	<div class="row">
-        <div class="col-md-6">
-            <div class="table-responsive">
-                <table class="table table-condensed nomargin">
+        <div class="col-md-12">
+            <div>
+                <table class="pay-table">
                     <thead>
                         <tr>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th><strong>AMOUNT</strong></th>
@@ -32,80 +35,76 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>EARNINGS</strong></td>
+                            <td><strong>EARNINGS:</strong></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><div>Base Pay</div></td>
+                            <td></td>
                             <td>{{p.rate}}</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><div>Allowances</div></td>
+                            <td></td>
                             <td>{{p.id_number.allowance}}</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Overtimes</td>
-                            <td>{{p.id_number.overtime_pay}}</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">Overtimes</td>
                             <td></td>
-                        </tr>
+                            <td style="border-bottom: 1px solid #b6b6b6;">{{p.id_number.overtime_pay}}</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;"></td>
+                        </tr>   
                         <tr>
                             <td><strong>GROSS PAY</strong></td>
                             <td></td>
+                            <td></td>
                             <td><strong>PHP</strong></td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
-            <hr class="nomargin-top">
-            <h6><strong>DEDUCTIONS</strong></h6>
-            <div class="table-responsive">
-                <table class="table table-condensed nomargin">
-                    <tbody>
+          
+                        <tr style="border-top: 1px solid #b6b6b6;">
+                            <td><strong>DEDUCTIONS:</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                         <tr>
                             <td><div>W/HOLDING TAX</div></td>
+                            <td></td>
                             <td>{{p.deductions_tax}}</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td><div>PHILHEALTH</div></td>
+                            <td></td>
                             <td>{{p.deductions_health}}</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>SSS</td>
-                            <td>{{p.sss}}</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">SSS</td>
                             <td></td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">{{p.sss}}</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;"></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
+                        <tr style="border-bottom: 1px solid #b6b6b6;">
                             <td><div><strong>TOTAL DEDUCTIONS</strong></div></td>
                             <td></td>
+                            <td></td>
                             <td><strong>PHP</strong></td>
+                        </tr>
+                        <tr>
+                            <td> <h4><strong>NET PAY</strong></h4></td>
+                            <td></td>
+                            <td><h4><strong>PHP</strong></h4></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <hr class="nomargin-top">
         </div>
     </div>
-    
-    <hr class="nomargin-top">
-    <div class="row">
-        <div class="col-sm-6 text-left">
-            <h4><strong>NET PAY</strong></h4>
-            <br><!-- no P margin for printing - use <br> instead -->
-
-            
-        </div>
-
-	</div>
 </div>
 
 

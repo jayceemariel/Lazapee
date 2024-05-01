@@ -5,10 +5,11 @@
 <h2>Pay Slip</h2>
 
 <div class="container-fluid ">
-    <div class="row  text-center" >
-        <div class="col-12">
+    <div class="row text-center" style="justify-content: center" > 
+        <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Center_an_element ; forgot what to do for justifying containers at the center-->
+        <div class="col-4">
             <label for="Payroll For" style="margin-bottom: 10px;">PayRoll For:</label> <!--Should be a drop down option-->
-            <select name="supplier-names" id="supplier-names" style="width: 415px; height: 50px;"> 
+            <select name="supplier-names" id="supplier-names" class="dropdowns"> 
                 <option value="" >Choose one...</option>
                     <option value="All">All Emplyoees</option>
                 {% for e in employee %}
@@ -20,7 +21,7 @@
     <div class="row">
         <div class="col-4">
             <label for="supplier" style="margin-bottom: 10px;">Month:</label> <!--Should be a drop down option-->
-            <select name="supplier-names" id="supplier-names" style="width: 415px; height: 50px;"> 
+            <select name="supplier-names" id="supplier-names" class="dropdowns"> 
                 <option name="" value="" style="display:none;">Choose one...</option>
                 <option name="January" value="Jan">January</option>
                 <option name="February" value="Feb">February</option>
@@ -41,8 +42,8 @@
             <input type="text" class="form-control mb-3" id="cost">
         </div>     
         <div class="col-4">
-            <label for="supplier" style="margin-bottom: 10px;">Cycle:</label> <!--Should be a drop down option-->
-            <select name="supplier-names" id="supplier-names" style="width: 415px; height: 50px;"> 
+            <label for="supplier" style="margin-bottom: 10px;" >Cycle:</label> <!--Should be a drop down option-->
+            <select name="supplier-names" id="supplier-names" class="dropdowns"> 
                 <option value="" >Choose one...</option>
                 <option value="1">1</option> 
                 <option value="2">2</option> 
