@@ -32,11 +32,11 @@ urlpatterns = [
 
     #Viewing of Employee
     path('view_employee/<int:pk>/', views.employee, name='employee'),
-    path('add_employee/<int:pk>/', views.add_employee, name='add_employee'),
-    path('update_employee/<int:pk>/', views.update_employee, name='update_employee'),
+    path('add_employee/<str:id>/', views.add_employee, name='add_employee'),
+    path('update_employee/<str:id>/<int:pk>/', views.update_employee, name='update_employee'),
 
     #Pay-slips
-    path('view_payslips/<int:pk>/', views.view_payslip, name='view_payslip'),
+    path('view_payslips/<str:id>/<int:pk>/', views.view_payslip, name='view_payslip'),
     path('payslips/<int:pk>/', views.pay_slip, name='payslips'),
     
 ]

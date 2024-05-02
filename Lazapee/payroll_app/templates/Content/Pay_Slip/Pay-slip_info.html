@@ -3,7 +3,6 @@
 
 {% block content %} 
 <h2>Pay Slip</h2>
-
 <div class="container-fluid ">
     <div class="row text-center" style="justify-content: center" > 
         <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Center_an_element ; forgot what to do for justifying containers at the center-->
@@ -76,7 +75,7 @@
             <td> {{ p.total_pay }} </td>
             
             <td>
-                <a href="{% url 'view_payslip' pk=p.pk%}"  class="btn btn-danger">View</a>        
+                <a href="{% url 'view_payslip' pk=p.pk id=id%}"  class="btn btn-danger">View</a>        
             </td>
          </tr>
         {% endfor %}

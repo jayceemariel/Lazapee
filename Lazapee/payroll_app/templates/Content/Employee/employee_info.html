@@ -3,13 +3,12 @@
 
 {% block content %} 
 <h2 style="float: left; ">Employees</h2>
-<a  style="float: right;" href="{% url 'add_employee' pk=d.pk%}" class="btn btn-dark" style="float: left; margin-right: 30px; margin-bottom: 10px;">
+<a  style="float: right;" href="{% url 'add_employee' id=id %}" class="btn btn-dark" style="float: left; margin-right: 30px; margin-bottom: 10px;">
     <svg style="width: 20px; "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg> Add New Employee </a>
-
 <div class="container">
-    
+
     <table class="table table-striped">
         <thead >
             <tr>
@@ -23,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for e in employee%} <!--bottles var came from views.py-->
+            {% for e in employee %} <!--bottles var came from views.py-->
             <tr>
                 <td> {{ e.name }} </td>
                 <td> {{ e.id_number }} </td>
@@ -31,7 +30,7 @@
                 <td> {{ e.allowance }} </td>
                 <td> {{ e.overtime_pay }} </td>
                 <td>
-                    <a href="{%url 'update_employee' pk=e.pk %}"  class="btn btn-primary">Update</a>
+                    <a href="{%url 'update_employee'  pk=e.pk id=id %}"  class="btn btn-primary">Update</a>
                     <a href="#"  class="btn btn-danger">Delete</a>
                     <input type="text" class="form-control mb-3"  placeholder="Overtime Hours">
                     <a type="button" class="btn btn-success">Add Overtime</a>

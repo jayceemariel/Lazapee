@@ -2,21 +2,36 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib import messages
 
-
+id =0
 # Create your views here.
 def dashboard(request,pk):
+    global id
     d = get_object_or_404(Account, pk=pk)
-    return render(request, 'home_dashboard.html', {'d': d})
+    id = d.user
+    return render(request, 'home_dashboard.html', {'d':d,'id':id})
 
 def employee(request,pk):
+    global id
     d = get_object_or_404(Account, pk=pk)
+    id = d.user
     e = Employee.objects.all()
     return render(request, 'Content/Employee/employee_info.html', 
                   {'d': d, 
+                   'id':id,
                    'employee': e})
 
-def add_employee(request,pk):
-    d = get_object_or_404(Account, pk=pk)
+def update_employee(request,pk,id):
+    e = get_object_or_404(Employee, pk=pk)
+    d = get_object_or_404(Account, user=id)  
+    id = str(id)
+    return render(request, 'Content/Employee/update_employee.html',
+                  {'d':d,
+                    'id':id,
+                   'e': e})
+
+def add_employee(request, id):
+    d = get_object_or_404(Account,  user=id)
+    id = str(id)
     
     if request.method == "POST":
         name = request.POST.get('name')
@@ -26,42 +41,37 @@ def add_employee(request,pk):
         if not allowance:
             allowance = None
         Employee.objects.create(name=name, id_number= id_num, rate=rate, allowance=allowance)
-        return redirect(request, 'Content/Employee/employee_info.html',{'d': d})
+        return redirect(request, 'Content/Employee/employee_info.html',{'d': d, 'id':id})
    
-    return render(request, 'Content/Employee/add_employee.html',{'d': d})
+    return render(request, 'Content/Employee/add_employee.html',{'d': d, 'id':id})
 
-def update_employee(request,pk):
-    e = get_object_or_404(Employee, pk=pk)
-    
-
-    if pk is not None:
-        user = get_object_or_404(Account, pk=pk)
-
-    return render(request, 'Content/Employee/update_employee.html',
-                  {'d': user,
-                    'e': e,
-                    })
 
 
 
 def pay_slip(request,pk):
+    global id
     d = get_object_or_404(Account, pk=pk)
+    id = d.user
     p = PaySlip.objects.all()
     e = Employee.objects.all()
     return render(request, 'Content/Pay_Slip/Pay-slip_info.html', 
                   {'d':d,
+                  'id':id,
                    'payslip': p,
                    'employee': e,})
 
 
-def view_payslip(request,pk=None):
+def view_payslip(request,pk, id):
     p =  get_object_or_404(PaySlip, pk=pk)
-    if pk is not None: 
-        user = get_object_or_404(Account, pk=pk)
-    return render(request, 'Content/Pay_Slip/view_PaySlip.html', 
-                  { 'd': user,
-                   'p': p})
+    d = get_object_or_404(Account, user=id)  
+    id = str(id)
 
+
+    return render(request, 'Content/Pay_Slip/view_PaySlip.html',
+                  {'d':d,
+                    'id':id,
+                   'p': p})
+  
 
 # MANAGE ACCOUNT
 def manage_account(request,pk):
