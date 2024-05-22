@@ -1,35 +1,27 @@
-## Lazapee
-A Web-based Payroll System in Django
+# Lazapee 🚀
+This project utillizes bootstraps, python, html, CSS and Javascript. It challenges the groups understanding of these languages and applying them by creating a web-based payroll system with the use of Django. 
 
-## Resources Used
-Icons: 
-- [Heroicons](https://heroicons.com/outline)
+## 1️⃣ Getting Started
+Run the development server by running ```manage.py```  in the terminal, make sure that the project directory from the terminal is set to where ```manage.py```  files is located. 
+``` 
+python manage.py runserver
+```
+You can then access the website at http://localhost:8000
 
-Sidebar inspiration: 
-- [W3Schools - How TO - Sidebar](https://www.w3schools.com/howto/howto_js_sidenav.asp)
+## 2️⃣ Resources Used
+**Icons**: The sweet icons used for this project came from [Heroicons](https://heroicons.com/outline)
 
-Others scripts that where added to the side Navbar:
+**Sidebar inspiration**: Our sidebar main inspiration was from [W3Schools - How TO - Sidebar](https://www.w3schools.com/howto/howto_js_sidenav.asp)
+
+**JavaScript Goodies**: We have also added some neat scripts to our sidebar navbar, thanks to:
 - [JavaScript: Document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
 - [JavaScript: Understanding classlist Propert](https://www.w3schools.com/jsref/prop_element_classlist.asp)
 - [JavaScript: Remove class from an element](https://www.w3schools.com/howto/howto_js_remove_class.asp)
 
-Other Django modules that where used aside from the one discussed in class:
-- [DJANGO Messages](https://docs.djangoproject.com/en/5.0/ref/contrib/messages)
+**Bootstrap Magic**: We're also utilizing existing Bootstraps like [BOOTSTRAP Modal](https://getbootstrap.com/docs/5.3/components/modal) to add that extra flair. 
 
-Existing Bootstraps that are used:
--[BOOTSTRAP Modal](https://getbootstrap.com/docs/5.3/components/modal)
+## 3️⃣ Work Distribution
+The project was divided among three teams: I handled front-end design, while the other two members focused on backend development. We collaborated closely, sharing ideas, solving problems together, and celebrating milestones as a cohesive team. Our combined skills and teamwork brought Lazapee to life!
 
-Playing around with animation in css for login, w3schools is the main references for understanding animation in the login:
--[W3Schools: CSS Animation](https://www.w3schools.com/cssref/css3_pr_animation.php)
 
-## Sources in APA
-1. Heroicons. (n.d.). Outline icons. Retrieved from: https://heroicons.com/outline.
-2. Modal. (n.d.). Bootstrap. Retrieved from:
-https://getbootstrap.com/docs/5.3/components/modal.
-3. The messages framework. (n.d.). Django. Retrieved from:
-https://docs.djangoproject.com/en/5.0/ref/contrib/messages.
-4. W3Schools. (n.d.). How TO - Sidebar. Retrieved from: https://www.w3schools.com/howto/howto_js_sidenav.asp.
-5. Mozilla. (n.d.). Document.querySelectorAll(). Retrieved from: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll.
-6. W3Schools. (n.d.). Element.classList Property. Retrieved from: https://www.w3schools.com/jsref/prop_element_classlist.asp.
-7. W3Schools. (n.d.). How TO - Remove class from an element. Retrieved from: https://www.w3schools.com/howto/howto_js_remove_class.asp.
-8. "CSS Animations," n.d. Retrieved from: https://www.w3schools.com/cssref/css3_pr_animation.php.
+
