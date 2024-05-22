@@ -5,24 +5,25 @@
 {% block content %} 
 <div class="container-fluid" style="height: 100vh">
     <h4>Create Employee</h4>
+    <p class="text-center" style="color: rgb(88, 63, 24); font-weight: bold;"> {{ message }} </p>
     <form  id="adding_employee_form" method="POST" >
         {% csrf_token %}
         <div class="row">
-            <label for="sku" class="col-4">Name:</label>
-            <input type="text" class="form-control mb-3 col-8" id="name" name="name">
+            <label for="name" class="col-4">Name:</label>
+            <input type="text" class="form-control mb-3 col-8" id="name" name="name" required>
         </div>
         <div class="row">
-            <label for="brand" class="col-4">ID Number:</label>
-            <input type="text" class="form-control mb-3 col-8" id="id_num" name="id_num">
+            <label for="id_num" class="col-4">ID Number:</label>
+            <input type="number" min="0" class="form-control mb-3 col-8" id="id_num" name="id_num" required>
         </div>
         <div class="row">
-            <label for="cost" class="col-4">Rate:</label>
-            <input type="text" class="form-control mb-3 col-8" id="rate" name="rate">
+            <label for="rate" class="col-4">Rate (min. 1000):</label>
+            <input type="number" min="1000" class="form-control mb-3 col-8" id="rate" name="rate" required>
         </div>
     
         <div class="row">
-            <label for="size" class="col-4">Allowance (Optional):</label>
-            <input type="text" class="form-control mb-3 col-8" id="Allowance" name="Allowance">
+            <label for="Allowance" class="col-4">Allowance (Optional):</label>
+            <input type="number" min="0" class="form-control mb-3 col-8" id="Allowance" name="Allowance">
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
         <a href="{%url 'employee' pk=d.pk %}"  class="btn btn-danger">Cancel</a>

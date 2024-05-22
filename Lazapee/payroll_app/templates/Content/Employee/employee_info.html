@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block content %} 
-<h2 style="float: left; ">Employees</h2>
+<h2 style="float: left; ">Manage Employees</h2>
 <a  style="float: right;" href="{% url 'add_employee' id=id %}" class="btn btn-dark" style="float: left; margin-right: 30px; margin-bottom: 10px;">
     <svg style="width: 20px; "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg> Add New Employee </a>
-<div class="container">
-
+<div class="container" style="padding-bottom: 50px;">
+  <p class="text-center" style="color: rgb(88, 63, 24); font-weight: bold;"> {{ message }} </p>
     <table class="table table-striped">
         <thead >
             <tr>
@@ -30,10 +30,39 @@
                 <td> {{ e.allowance }} </td>
                 <td> {{ e.overtime_pay }} </td>
                 <td>
-                    <a href="{%url 'update_employee'  pk=e.pk id=id %}"  class="btn btn-primary">Update</a>
-                    <a href="#"  class="btn btn-danger">Delete</a>
-                    <input type="text" class="form-control mb-3"  placeholder="Overtime Hours">
-                    <a type="button" class="btn btn-success">Add Overtime</a>
+                    <a href="{%url 'update_employee' id=id pk=e.pk  %}"  class="btn btn-primary">Update</a>
+                    <a href="#"  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_employee_{{ e.pk }}">Delete</a>
+                    
+                     <!-- 
+                      Source for pop-up textbox when deleting:
+                      Modal. (n.d.). Bootstrap. Retrieved from:
+                      https://getbootstrap.com/docs/5.3/components/modal.
+                    -->
+                    
+                    <div class="modal fade" id="delete_employee_{{ e.pk }}" tabindex="-1" aria-labelledby="delete_employeeLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="delete_employeeLabel">Delete Employee</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Are you sure you want to remove employee {{e.name}}?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancel </button>
+                              <a href="{%url 'delete_employee' id=d.pk pk=e.pk %}"  class="btn btn-danger"> Delete </a> 
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <form id="overtime_form_{{ e.pk }}" method="post" action="{%url 'overtime' id=d.pk pk=e.pk %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <input type="number" min="1" class="form-control mb-3 col-8" id="hours" name="hours" placeholder="Overtime Hours" style="width:fit-content; height: fit-content; align-self: center;margin-right: 10px;">
+                            <button type="submit" class="btn btn-success" style="width:fit-content; height: fit-content; align-self: center;">Add Overtime</button>
+                        </div>
+                    </form>
                 </td>
              </tr>
             {% endfor %}

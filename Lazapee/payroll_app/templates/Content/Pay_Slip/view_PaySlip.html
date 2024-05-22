@@ -16,7 +16,7 @@
             <h4><strong>Other</strong> Details</h4>
             <ul class="list-unstyled">
                 <li><strong>DATE:</strong> {{ p.month }} {{ p.date_range }}, {{ p.year }}</li>
-                <li><strong>PAYSLIP ID:</strong> 1</li> 
+                <li><strong>PAYSLIP ID:</strong> {{ p.pk }}</li> 
             </ul>
         </div>
     </div>
@@ -27,23 +27,23 @@
                 <table class="pay-table">
                     <thead>
                         <tr>
+                            <th>CYCLE {{ p.pay_cycle}}</th>
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th><strong>AMOUNT</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>EARNINGS:</strong></td>
+                            <td><strong>EARNINGS</strong></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td><strong>AMOUNT:</strong></td>
                         </tr>
                         <tr>
-                            <td><div>Base Pay</div></td>
+                            <td><div>Base Pay (Rate / 2)</div></td>
                             <td></td>
-                            <td>{{p.rate}}</td>
+                            <td>{{ hr }}</td>
                             <td></td>
                         </tr>
                         <tr>
@@ -53,16 +53,16 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td style="border-bottom: 1px solid #b6b6b6;">Overtimes</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">Overtime</td>
                             <td></td>
-                            <td style="border-bottom: 1px solid #b6b6b6;">{{p.id_number.overtime_pay}}</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">{{p.overtime}}</td>
                             <td style="border-bottom: 1px solid #b6b6b6;"></td>
                         </tr>   
                         <tr>
                             <td><strong>GROSS PAY</strong></td>
                             <td></td>
                             <td></td>
-                            <td><strong>PHP</strong></td>
+                            <td><strong>PHP {{ gross }}</strong></td>
                         </tr>
           
                         <tr style="border-top: 1px solid #b6b6b6;">
@@ -78,33 +78,35 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td><div>PHILHEALTH</div></td>
+                            <td><div>{{ dd11 }}</div></td>
                             <td></td>
-                            <td>{{p.deductions_health}}</td>
+                            <td>{{ dd12 }}</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td style="border-bottom: 1px solid #b6b6b6;">SSS</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">{{ dd21 }}</td>
                             <td></td>
-                            <td style="border-bottom: 1px solid #b6b6b6;">{{p.sss}}</td>
+                            <td style="border-bottom: 1px solid #b6b6b6;">{{ dd22 }}</td>
                             <td style="border-bottom: 1px solid #b6b6b6;"></td>
                         </tr>
                         <tr style="border-bottom: 1px solid #b6b6b6;">
                             <td><div><strong>TOTAL DEDUCTIONS</strong></div></td>
                             <td></td>
                             <td></td>
-                            <td><strong>PHP</strong></td>
+                            <td><strong>PHP {{ ddct }}</strong></td>
                         </tr>
                         <tr>
                             <td> <h4><strong>NET PAY</strong></h4></td>
                             <td></td>
-                            <td><h4><strong>PHP</strong></h4></td>
+                            <td></td>
+                            <td><h4><strong>PHP {{p.total_pay}}</strong></h4></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <a  class="btn btn-secondary" href="{% url 'payslips'  pk=d.pk %}"> Back </a>
 </div>
 
 

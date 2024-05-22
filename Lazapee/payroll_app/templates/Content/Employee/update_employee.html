@@ -4,34 +4,35 @@
 
 {% block content %} 
 <div class="container-fluid" style="height: 100vh">
-    <h4>Create Employee</h4>
-    <form  id="adding_employee_form" method="POST" >
+    <h4>Update Employee</h4>
+    <form  id="update_employee_form" method="POST" action="{% url 'update_employee' id=id pk=e.pk %}">
         {% csrf_token %}
         <div class="row">
-            <label for="sku" class="col-4">Name:</label>
-            <input type="text" class="form-control mb-3 col-8" id="name" name="name" placeholder="{{ e.name }}">
+            <label for="name" class="col-4">Name:</label>
+            <input type="text" class="form-control mb-3 col-8" id="name" name="name" placeholder="{{ e.name }}" required>
         </div>
         <div class="row">
-            <label for="brand" class="col-4">ID Number:</label>
-            <input type="text" class="form-control mb-3 col-8" id="id_num" name="id_num" placeholder=" {{ e.id_number }}">
+            <label for="id_num" class="col-4">ID Number (cannot be changed):</label>
+            <input type="number" min="0" class="form-control mb-3 col-8" id="id_num" name="id_num" placeholder=" {{ e.id_number }}" readonly>
         </div>
         <div class="row">
-            <label for="cost" class="col-4">Rate:</label>
-            <input type="text" class="form-control mb-3 col-8" id="rate" name="rate" placeholder=" {{ e.rate }}">
+            <label for="rate" class="col-4">Rate (min. 1000):</label>
+            <input type="number" min="1000" class="form-control mb-3 col-8" id="rate" name="rate" placeholder=" {{ e.rate }}" required>
         </div>
     
         <div class="row">
-            <label for="size" class="col-4">Allowance (Optional):</label>
-            <input type="text" class="form-control mb-3 col-8" id="Allowance" name="Allowance" placeholder="{{ e.allowance }}">
+            <label for="Allowance" class="col-4">Allowance (Optional):</label>
+            <input type="number" min="0" class="form-control mb-3 col-8" id="Allowance" name="Allowance" placeholder="{{ e.allowance }}" required>
         </div>
 
         <div class="row">
-            <label for="size" class="col-4">Overtime Pay:</label>
-            <input type="text" class="form-control mb-3 col-8" id="Allowance" name="Allowance" placeholder="{{ e.overtime_pay }}">
+            <label for="overtime" class="col-4">Current Overtime Pay (use reset overtime):</label>
+            <input type="text" class="form-control mb-3 col-8" id="overtime" name="overtime" placeholder="{{ e.overtime_pay }}" readonly>
         </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <a href="{%url 'employee' pk=d.pk %}"  class="btn btn-danger">Cancel</a>
+        <a href="{% url 'rovertime'  id=d.pk pk=e.pk %}"  class="btn btn-secondary"> Reset Overtime </a> <!-- mostly so i can check if the overtime button works-->
     </form>
 </div>
     

@@ -2,15 +2,17 @@
 {% load static %}
 
 {% block content %} 
-<h2>Pay Slip</h2>
+<h2>Manage Payslips</h2>
 <div class="container-fluid ">
+    <form id="payslip_gen" method="POST" action="{% url 'payslips' pk=d.pk %}">
+    {% csrf_token %}
     <div class="row text-center" style="justify-content: center" > 
         <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Center_an_element ; forgot what to do for justifying containers at the center-->
         <div class="col-4">
-            <label for="Payroll For" style="margin-bottom: 10px;">PayRoll For:</label> <!--Should be a drop down option-->
-            <select name="supplier-names" id="supplier-names" class="dropdowns"> 
+            <label for="Payroll For" style="margin-bottom: 10px;">Payroll for:</label> <!--Should be a drop down option-->
+            <select name="idno" id="idno" class="dropdowns" required>
                 <option value="" >Choose one...</option>
-                    <option value="All">All Emplyoees</option>
+                    <option value="All">All Employees</option>
                 {% for e in employee %}
                     <option value="{{ e.id_number}}">{{ e.id_number }}</option>
                 {% endfor %}
@@ -19,30 +21,30 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <label for="supplier" style="margin-bottom: 10px;">Month:</label> <!--Should be a drop down option-->
-            <select name="supplier-names" id="supplier-names" class="dropdowns"> 
+            <label for="month" style="margin-bottom: 10px;">Month:</label> <!--Should be a drop down option-->
+            <select name="month" id="month" class="dropdowns" required> 
                 <option name="" value="" style="display:none;">Choose one...</option>
-                <option name="January" value="Jan">January</option>
-                <option name="February" value="Feb">February</option>
-                <option name="March" value="Mar">March</option>
-                <option name="April" value="Apr">April</option>
+                <option name="January" value="January">January</option>
+                <option name="February" value="February">February</option>
+                <option name="March" value="March">March</option>
+                <option name="April" value="April">April</option>
                     <option name="May" value="May">May</option>
-                <option name="June" value="Jun">June</option>
-                <option name="July" value="Jul">July</option>
-                <option name="August" value="Aug">August</option>
-                    <option name="September" value="Sep">September</option>
-                <option name="October" value="Oct">October</option>
-                <option name="November" value="Nov">November</option>
-                <option name="December" value="Dec">December</option>
+                <option name="June" value="June">June</option>
+                <option name="July" value="July">July</option>
+                <option name="August" value="August">August</option>
+                    <option name="September" value="September">September</option>
+                <option name="October" value="October">October</option>
+                <option name="November" value="November">November</option>
+                <option name="December" value="December">December</option>
              </select>  
         </div>  
         <div class="col-4">
-            <label for="cost">Year</label>
-            <input type="text" class="form-control mb-3" id="cost">
+            <label for="year">Year</label>
+            <input type="number" name="year" id="year" class="form-control mb-3" required>
         </div>     
         <div class="col-4">
-            <label for="supplier" style="margin-bottom: 10px;" >Cycle:</label> <!--Should be a drop down option-->
-            <select name="supplier-names" id="supplier-names" class="dropdowns"> 
+            <label for="pay_cycle" style="margin-bottom: 10px;" >Cycle:</label> <!--Should be a drop down option-->
+            <select name="pay_cycle" id="pay_cycle" class="dropdowns" required> 
                 <option value="" >Choose one...</option>
                 <option value="1">1</option> 
                 <option value="2">2</option> 
@@ -50,11 +52,13 @@
             
         </div>      
         <div class="col-12  text-center"> <!-- Adjusted column width to full width -->
-            <a href="#" class="btn btn-primary">Submit</a> <!-- Corrected typo in 'Submit' -->
+            <button type="submit" class="btn btn-primary">Submit</button> <!-- Corrected typo in 'Submit' -->
         </div>
     </div>
+    </form>
 
 </div>
+<p class="text-center" style="color: rgb(88, 63, 24); font-weight: bold;"> {{ message }} </p>
 <h2>Pay Summary</h2>
 <table class="table table-striped">
     <thead >
@@ -67,7 +71,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for p in payslip%} 
+        {% for p in payslip %} 
         <tr>
             <td> {{ p.id_number.id_number }} </td>
             <td> {{ p.month }} {{ p.date_range }}, {{ p.year }} </td>
@@ -75,10 +79,16 @@
             <td> {{ p.total_pay }} </td>
             
             <td>
-                <a href="{% url 'view_payslip' pk=p.pk id=id%}"  class="btn btn-danger">View</a>        
+                <a href="{% url 'view_payslip' pk=p.pk id=id%}"  class="btn btn-primary">View</a>        
             </td>
          </tr>
         {% endfor %}
     </tbody>
 </table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

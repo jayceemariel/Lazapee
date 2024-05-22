@@ -26,14 +26,13 @@
         color:  var(--point-color); 
     }
 
-
     </style>
 </head>
 <body>
 
    <div class="base-container-fluid container-element-form ">
         <h1>LazaPee</h1>
-        <p style ="color:#A7A8B6"> Sign in By entering the information Below</p>
+        <p style ="color:#A7A8B6"> Sign in by entering the information below:</p>
         
         <form id="login_form" method="POST" action="{% url 'Login' %}">
             {% csrf_token %}
@@ -60,9 +59,9 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>
             <div  class="form-elements">
-                <div class ="link-1 right">Forgot your password?</div>
+                <br>
                 <div><button type="submit" class="btn btn-Blue long-button">Submit</button></div>    
-                <div class="subtitle"> Need an account? <a class ="link-1 right" href="{% url 'sign-up_view' %}">Sign-up</a></div>
+                <div class="subtitle"> Need an account? <a class ="link-1 right" href="{% url 'sign-up_view' %}">Sign Up</a></div>
             </div>
         </form>
         

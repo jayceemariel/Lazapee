@@ -32,16 +32,29 @@ The back button will return the user to the basic list page.
 </head>
 <body>
     <h1>Manage Account</h1>
-    <p>Welcome! <b><u>{{d.user}}</u></b></p>
-    <a  class="btn" href="{% url 'change_password' pk=d.pk %}">Change Password</a>
-              
+    <p>Welcome! You are logged in as: <b><u>{{d.user}}</u></b></p>
+
+    <h5>Account Actions:</h5>
+    <a  class="btn btn-primary" href="{% url 'change_password' pk=d.pk %}">Change Password</a>
+    <br>       
+    <br>   
     <!-- navigate the user to a new page to prompt them to supply a new password. -->
     
-    <a  class="btn btn-danger" href="#">Delete Account</a>
+    <a  class="btn btn-secondary" href=" {% url 'delete_account' pk=d.pk %}">Delete Account</a>
     <!-- delete the credentials, then will log out the user (like above). If the user attempts to login again using the deleted account’s credentials, the login attempt should be invalid. -->
-
-    <a  class="btn" href="{% url 'employee' pk=d.pk %}">Back</a>
-              
+    <br>
+    <br>
+    <h5>Database Purge (DANGER):</h5>
+    <a  class="btn btn-danger" href="{% url 'del_payslips' id=d.user %}"> Delete all Payslips </a>
+    <!-- deletes all payslips and navigates back to the empty payslips page.  -->
+    <br>
+    <br>
+    <a  class="btn btn-dark" href="{% url 'delete_all_employee' id=d.user %}"> Delete all Employees </a>
+    <!-- deletes all employees and navigates back to the empty employee info page-->
+    <br>
+    <br>
+    <p>Note: Deleting all employees will also delete all associated payslips.</p>
+    <a  class="btn btn-secondary" href="{% url 'employee' pk=d.pk%}">Back</a>
     <!-- will return the user to the basic list page.  -->
 </body>
 </html>

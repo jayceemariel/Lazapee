@@ -29,15 +29,21 @@ urlpatterns = [
    #Manage Account Stuff
     path('change_password/<int:pk>/', views.change_password, name='change_password'),
     path('manage_account/<int:pk>/', views.manage_account, name='manage_account'),
+    path('account_deleted/<int:pk>/', views.delete_account, name='delete_account'),
 
     #Viewing of Employee
     path('view_employee/<int:pk>/', views.employee, name='employee'),
     path('add_employee/<str:id>/', views.add_employee, name='add_employee'),
     path('update_employee/<str:id>/<int:pk>/', views.update_employee, name='update_employee'),
+    path('delete_employee/<str:id>/<int:pk>/', views.delete_employee, name='delete_employee'),
+    path('overtime_pay/<str:pk>/<int:id>/', views.overtime, name='overtime'),
+    path('reset_overtime/<str:id>/<int:pk>/', views.reset_overtime, name='rovertime'),
+    path('delete_all_employee/<str:id>/', views.delete_all_employees, name='delete_all_employee'),
 
     #Pay-slips
     path('view_payslips/<str:id>/<int:pk>/', views.view_payslip, name='view_payslip'),
     path('payslips/<int:pk>/', views.pay_slip, name='payslips'),
+    path('delete_all_payslips/<str:id>', views.delete_payslips, name='del_payslips'),
     
 ]
 

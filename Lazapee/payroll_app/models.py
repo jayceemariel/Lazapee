@@ -16,9 +16,9 @@ class Account(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=100)
-    id_number = models.CharField(max_length=20)
+    id_number = models.CharField(max_length=20, unique = True)
     rate = models.FloatField()
-    overtime_pay = models.FloatField(null=True, blank=True)
+    overtime_pay = models.FloatField(null=True, blank=True, max_length=10)
     allowance = models.FloatField(null=True, blank=True)
 
     def getName(self):
