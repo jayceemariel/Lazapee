@@ -21,7 +21,7 @@ You can then access the website at http://localhost:8000
 **Bootstrap Magic**: We're also utilizing existing Bootstraps like [BOOTSTRAP Modal](https://getbootstrap.com/docs/5.3/components/modal) to add that extra flair. 
 
 ## 3️⃣ Work Distribution
-The project was divided among three teams: I handled front-end design, while the other two members focused on backend development. We collaborated closely, sharing ideas, solving problems together, and celebrating milestones as a cohesive team. Our combined skills and teamwork brought Lazapee to life!
+The project was divided among three teams: I handled front-end design, while the other two members focused on backend development. We collaborated closely, sharing ideas, debugging the code, and working together as a team.  
 
 
 
